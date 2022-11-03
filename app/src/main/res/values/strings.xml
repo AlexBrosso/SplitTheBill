@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SplitTheBill</string>
+    <string name="add_contact">Add contact</string>
+    <string name="paidAmount">Quanto foi pago pela compra (R$)</string>
+    <string name="purchasedItem">O que foi comprado</string>
+    <string name="name">Nome</string>
+    <string name="saveInfo">Salvar informações</string>
+    <string name="cancel">Cancelar</string>
+</resources>
