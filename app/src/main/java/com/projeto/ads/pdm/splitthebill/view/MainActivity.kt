@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.projeto.ads.pdm.splitthebill.R
+import com.projeto.ads.pdm.splitthebill.adapter.PersonAdapter
 import com.projeto.ads.pdm.splitthebill.databinding.ActivityMainBinding
 import com.projeto.ads.pdm.splitthebill.model.Constant.EXTRA_PERSON
 import com.projeto.ads.pdm.splitthebill.model.Person
@@ -21,9 +22,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var personActivityResultLauncher: ActivityResultLauncher<Intent>
 
+    private val personList: MutableList<Person> = mutableListOf()
+
+    private lateinit var personAdapter: PersonAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activityMainBinding.root)
+
+        personAdapter = PersonAdapter(this, personList)
+        activityMainBinding.personLv.adapter = personAdapter;
 
         personActivityResultLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()){
@@ -31,7 +39,8 @@ class MainActivity : AppCompatActivity() {
             if (result.resultCode == RESULT_OK){
                 val person = result.data?.getParcelableExtra<Person>(EXTRA_PERSON)
                 person?.let {_person ->
-                    activityMainBinding.test.text = _person.name
+                    personList.add(_person)
+                    personAdapter.notifyDataSetChanged()
                 }
             }
             else Toast.makeText(this, "Operação cancelada.", Toast.LENGTH_SHORT).show()
