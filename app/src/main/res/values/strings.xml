@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">SplitTheBill</string>
-    <string name="add_contact">Add contact</string>
+    <string name="add_person">Adicionar Pessoa</string>
+    <string name="edit_person">Editar Pessoa</string>
+    <string name="remove_person">Remover Pessoa</string>
     <string name="paidAmount">Quanto foi pago pela compra (R$)</string>
     <string name="purchasedItem">O que foi comprado</string>
     <string name="name">Nome</string>
     <string name="saveInfo">Salvar informações</string>
-    <string name="cancel">Cancelar</string>
+    <string name="cancel">Retornar</string>
+    <string name="split">Dividir a conta</string>
 </resources>

@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/addPersonMi"
         android:icon="@drawable/ic_add"
-        android:title="@string/add_contact"
+        android:title="@string/add_person"
+        app:showAsAction="ifRoom"
+        >
+    </item>
+    <item android:id="@+id/splitTheBillMi"
+        android:icon="@drawable/ic_split"
+        android:title="@string/split"
         app:showAsAction="ifRoom"
         >
     </item>
