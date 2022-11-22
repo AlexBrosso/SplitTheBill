@@ -15,6 +15,7 @@ import com.projeto.ads.pdm.splitthebill.R
 import com.projeto.ads.pdm.splitthebill.adapter.PersonAdapter
 import com.projeto.ads.pdm.splitthebill.databinding.ActivityMainBinding
 import com.projeto.ads.pdm.splitthebill.model.Constant.EXTRA_PERSON
+import com.projeto.ads.pdm.splitthebill.model.Constant.PERSON_LIST
 import com.projeto.ads.pdm.splitthebill.model.Constant.VIEW_PERSON
 import com.projeto.ads.pdm.splitthebill.model.Person
 
@@ -79,7 +80,12 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.splitTheBillMi -> {
-                //A ser desenvolvido
+                if(personList.size > 1) {
+                    val splitIntent = Intent(this, SplitActivity::class.java)
+                    splitIntent.putParcelableArrayListExtra(PERSON_LIST, ArrayList(personList))
+                    startActivity(splitIntent)
+                }
+                else Toast.makeText(this, "Não há participantes suficientes para dividir a conta.", Toast.LENGTH_LONG).show()
                 true
             }
             else -> { false }

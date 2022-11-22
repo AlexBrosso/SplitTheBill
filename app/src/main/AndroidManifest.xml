@@ -16,6 +16,9 @@
             android:name=".view.PersonActivity"
             android:exported="true" />
         <activity
+            android:name=".view.SplitActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
