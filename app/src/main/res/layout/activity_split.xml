@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/confirmedPersonLv"
-    tools:context=".view.SplitActivity" />
+    android:orientation="vertical"
+    tools:context=".view.SplitActivity">
+
+    <TextView
+        android:id="@+id/titleTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gasto total: R$ 0.00"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/cancelBt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        android:fontFamily="sans-serif-condensed"
+        android:backgroundTint="@color/cancel"
+        android:layout_margin="5dp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/confirmedPersonLv" />
+
+</LinearLayout>

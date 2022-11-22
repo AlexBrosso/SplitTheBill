@@ -24,6 +24,8 @@ class SplitActivity : AppCompatActivity() {
                 sum += it.paidAmount
             }
 
+            activitySplitBinding.titleTv.text = "Gasto Total: R$ " + sum
+
             _receivedPersonList.forEach{
                 it.debt = sum / _receivedPersonList.size
 
@@ -35,9 +37,18 @@ class SplitActivity : AppCompatActivity() {
                     it.shouldReceive = 0.00
                     it.debt = it.debt - it.paidAmount
                 }
+                else{
+                    it.shouldReceive = 0.00
+                    it.debt = 0.00
+                }
             }
 
             activitySplitBinding.confirmedPersonLv.adapter = ConfirmedPersonAdapter(this, _receivedPersonList)
+        }
+
+        activitySplitBinding.cancelBt.setOnClickListener{
+            setResult(RESULT_CANCELED)
+            finish()
         }
 
     }

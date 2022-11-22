@@ -11,7 +11,7 @@ import com.projeto.ads.pdm.splitthebill.model.Person
 
 class ConfirmedPersonAdapter (context : Context, private val personList: MutableList<Person>) : ArrayAdapter<Person>(context, R.layout.tile_person, personList) {
 
-    private data class TileConfirmedPersonHolder(val nameTv: TextView, val debtTv: TextView, val shouldReceiveTv: TextView)
+    private data class TileConfirmedPersonHolder(val nameTv: TextView, val paidAmountTv: TextView, val debtTv: TextView, val shouldReceiveTv: TextView)
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val person = personList[position]
@@ -27,6 +27,7 @@ class ConfirmedPersonAdapter (context : Context, private val personList: Mutable
 
             val tilePersonHolder = TileConfirmedPersonHolder(
                 confirmedPersonTileView.findViewById(R.id.nameTv),
+                confirmedPersonTileView.findViewById(R.id.paidAmountTv),
                 confirmedPersonTileView.findViewById(R.id.debtTv),
                 confirmedPersonTileView.findViewById(R.id.shouldReceiveTv),
             )
@@ -35,6 +36,7 @@ class ConfirmedPersonAdapter (context : Context, private val personList: Mutable
 
         with(confirmedPersonTileView?.tag as TileConfirmedPersonHolder) {
             nameTv.text = person.name
+            paidAmountTv.text = "Valor Pago: R$ " + person.paidAmount.toString()
             debtTv.text = "Deve pagar: R$ " + person.debt.toString()
             shouldReceiveTv.text = "Deve receber: R$ " + person.shouldReceive.toString()
         }

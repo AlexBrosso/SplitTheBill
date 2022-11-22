@@ -13,6 +13,13 @@
         android:textSize="25sp" />
 
     <TextView
+        android:id="@+id/paidAmountTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="paidAmount"
+        android:textSize="15sp"/>
+
+    <TextView
         android:id="@+id/debtTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
