@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var personAdapter: PersonAdapter
 
+    private var adding : Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activityMainBinding.root)
@@ -44,9 +46,14 @@ class MainActivity : AppCompatActivity() {
             if (result.resultCode == RESULT_OK) {
                 val person = result.data?.getParcelableExtra<Person>(EXTRA_PERSON)
                 person?.let { _person->
-                    val position = personList.indexOfFirst { it.id == _person.id }
+                    val position = personList.indexOfFirst { it.name == _person.name }
                     if (position != -1) {
-                        personList[position] = _person
+                        if(!adding) {
+                            personList[position] = _person
+                        }
+                        else {
+                            Toast.makeText(this, "Não é possível cadastrar mais de uma pessoa com o mesmo nome.", Toast.LENGTH_LONG).show()
+                        }
                     }
                     else {
                         personList.add(_person)
@@ -55,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             else Toast.makeText(this, "Operação cancelada.", Toast.LENGTH_SHORT).show()
+            adding = false
         }
 
         registerForContextMenu(activityMainBinding.personLv)
@@ -77,6 +85,7 @@ class MainActivity : AppCompatActivity() {
         return when(item.itemId){
             R.id.addPersonMi -> {
                 personActivityResultLauncher.launch(Intent(this, PersonActivity::class.java))
+                adding = true
                 true
             }
             R.id.splitTheBillMi -> {

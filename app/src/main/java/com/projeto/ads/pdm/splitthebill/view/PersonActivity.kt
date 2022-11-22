@@ -23,6 +23,7 @@ class PersonActivity : AppCompatActivity() {
         val receivedPerson =  intent.getParcelableExtra<Person>(EXTRA_PERSON)
         receivedPerson?.let{ _receivedPerson ->
             activityPersonBinding.titleTv.text = "Editar Pessoa"
+            activityPersonBinding.nameEt.isEnabled = false
             with(activityPersonBinding)
             {
                 with(_receivedPerson)
@@ -50,7 +51,6 @@ class PersonActivity : AppCompatActivity() {
             if (!personName.isNullOrEmpty() && !personPaidAmount.isNullOrEmpty() && !personPurchasedItem.isNullOrEmpty())
             {
                 val person = Person(
-                    id = receivedPerson?.id ?: Random(System.currentTimeMillis()).nextInt(),
                     name = personName,
                     paidAmount = personPaidAmount.toDouble(),
                     purchasedItem = personPurchasedItem,
